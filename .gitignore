@@ -23,7 +23,7 @@
                 <div class="col-lg-4 text-left">
                         <p>
                         <div class="userChoice">
-                          <button name="Global">Global</button>
+                          <button name="Global" >Global</button>
                           <button name="Fortune">Fortune</button>
                         </div>
                         <p>
@@ -114,8 +114,8 @@ function resetAll(){
     },2500);
 }
 // Checking User Input
-$(document).on('click','button[name="Global"],button[name="Fortune"]', function(){
-    userchoice = $(this).attr("name");
+$(document).on('change','#userChoice', function(){
+    userchoice = $(this).val();
     if(userchoice == "") {
         $(this).parent('p').prepend("<span class='text text-danger'>Please select a coin side to play the game</span>")
         $('#btnFlip').attr('disabled','disabled');
@@ -145,11 +145,9 @@ $(document).on('click','#btnFlip',function() {
     if($('#userChoice').val() == "") return;
     var flipr = $('.coinBox>div').addClass('flip');
     var number = Math.floor(Math.random()*2);
-    $(this).attr('disabled','disabled').addClass('disableclick');
-    var button = $(this);
+    $(this).attr('disabled','disabled');
     setTimeout(function() {
         flipr.removeClass('flip');
-        button.removeClass('disableclick');
         //result time
         if(number) {
             result = 'Global';
